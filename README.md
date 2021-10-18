@@ -16,6 +16,7 @@ A aplicação Web usa o padrão AspNet MVC com Razor Pages para criar uma tela d
 # Microsoft.AspNetCore.SignalR.Core
 # JavaScript
 
+
 # Autor
 Leonardo Vinicius OLiveira Pereira
 
