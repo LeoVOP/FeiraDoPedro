@@ -1,0 +1,41 @@
+﻿@model List<Produto>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+
+<h2>Produtos do Feirante</h2>
+@if (SignInManager.IsSignedIn(User))
+{
+    <a class="btn btn-link" asp-controller="Produto" asp-action="Create">Cadastrar novo produto!</a>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(Model => Model.First().Id)</th>
+            <th>@Html.DisplayNameFor(Model => Model.First().Nome)</th>
+            <th>@Html.DisplayNameFor(Model => Model.First().Preco)</th>
+            <th style="text-align: center">@Html.DisplayNameFor(Model => Model.First().Foto)</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Produto produto in Model){
+                        
+            <tr class="">
+                <td> @Html.DisplayFor(Model => produto.Id) </td>
+                <td> @Html.DisplayFor(Model => produto.Nome) </td>
+                <td> @Html.DisplayFor(Model => produto.Preco) </td>                
+                <td> <img src="@Html.DisplayFor(Model => produto.Foto)" alt="" width="auto" height="100px" /> </td>                
+                <td>
+                    <a asp-controller="Cesta" asp-action="Update" asp-route-id="@produto.Id">Adicionar Item na Cesta</a> |                    
+                    <a asp-controller="Cesta" asp-action="Delete" asp-route-id="@produto.Id">Remover Item da Cesta</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br>
+
+
+<a class="btn btn-info" asp-controller="Home" asp-action="Index">Voltar!</a>

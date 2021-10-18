@@ -1,0 +1,40 @@
+﻿@*@model List<Cesta>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+
+<h2>Produtos do Feirante</h2>
+@if (SignInManager.IsSignedIn(User))
+{
+    <a class="btn btn-link" asp-controller="Produto" asp-action="Create">Cadastrar novo produto!</a>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(Model => Model.First().Id)</th>
+            <th>@Html.DisplayNameFor(Model => Model.First().Produto)</th>
+            <th>@Html.DisplayNameFor(Model => Model.First().Quantidade)</th>
+            <th style="margin-left: auto; margin-right: auto; text-align: center;">@Html.DisplayNameFor(Model => Model.First().Foto)</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Produto p in Model){
+                        
+            <tr class="">
+                <td> @Html.DisplayFor(Model => item.Id) </td>
+                <td> @Html.DisplayFor(Model => item.Nome) </td>
+                <td> @Html.DisplayFor(Model => item.Preco) </td>                
+                <td> <img src="@Html.DisplayFor(Model => item.Foto)</td>                
+                <td>
+                    <a asp-controller="Cesta" asp-action="Add" asp-route-id="@cesta.Id">Finalizar compra</a>                   
+                 </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br>
+
+
+<a class="btn btn-info" asp-controller="Cesta" asp-action="Index">Finalizar compra!</a>*@
