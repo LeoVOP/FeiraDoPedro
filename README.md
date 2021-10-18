@@ -1,6 +1,6 @@
 # FeiraDoPedro
 
-#Sobre o projeto
+# Sobre o projeto
 
 A aplicação Web usa o padrão AspNet MVC com Razor Pages para criar uma tela de exibição de produtos.Há possibilidade de criação de usuario eautenticação que abrirá uma função de cadatro de novos produtos.
     
